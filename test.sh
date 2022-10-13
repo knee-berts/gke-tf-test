@@ -23,8 +23,8 @@ for project in ${projects[@]}; do
   gcloud alpha billing projects link ${project} --billing-account ${BILLING_ID}
   echo "$project was created."
   
-  DIR="test-${project}"
-  mkdir ${DIR}
+  DIR="tests/test-${project}"
+  mkdir -p ${DIR}
   PATTERN=$(echo $project | sed -r 's/_/-/g').tf
   echo "Setting up test directory with ${PATTERN}"
   cp patterns/${PATTERN} ${DIR}
@@ -56,6 +56,7 @@ for project in ${projects[@]}; do
   pid=$!
   pids+=" ${pid}"
   echo "${pid}: Running: $project"
+  cd ${WORKDIR}
 done
 
 for p in $pids; do
