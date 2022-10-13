@@ -68,11 +68,13 @@ for p in $pids; do
   fi
 done
 
-cat <<EOF > source.sh
-export PROJECT_RAPID_STD_AUTO="${PROJECT_PREFIX}-defaults-${suffix}"
-export PROJECT_RAPID_AP_AUTO="${PROJECT_PREFIX}-defaults-rapid-${suffix}"
-export PROJECT_REGULAR_STD_AUTO="${PROJECT_PREFIX}-defaults-regular-${suffix}"
-export PROJECT_REGULAR_AP_AUTO="${PROJECT_PREFIX}-defaults-private-${suffix}"
-export PROJECT_RAPID_STD_MANUAL="${PROJECT_PREFIX}-defaults-private-rapid-${suffix}"
-export PROJECT_RAPID_AP_MANUAL="${PROJECT_PREFIX}-defaults-private-regular-${suffix}"
+cat <<EOF >> source.sh
+  export DEFAULTS_PROJECT="${PROJECT_PREFIX}-defaults-${suffix}"
+  export DEFAULTS_RAPID_PROJECT="${PROJECT_PREFIX}-defaults-rapid-${suffix}"
+  export DEFAULTS_REGULAR_PROJECT="${PROJECT_PREFIX}-defaults-regular-${suffix}"
+  export DEFAULTS_PRIVATE_PROJECT="${PROJECT_PREFIX}-defaults-private-${suffix}"
+  export DEFAULTS_PRIVATE_RAPID_PROJECT="${PROJECT_PREFIX}-defaults-private-rapid-${suffix}"
+  export DEFAULTS_PRIVATE_REGULAR_PROJECT="${PROJECT_PREFIX}-defaults-private-regular-${suffix}"
+  export KITCHEN_SINK_RAPID_PRIVATE="${PROJECT_PREFIX}-kitchen-sink-rapid-private-${suffix}"
+  export KITCHEN_SINK_RREGULAR_PRIVATE="${PROJECT_PREFIX}-kitchen-sink-regular-private-${suffix}"
 EOF
