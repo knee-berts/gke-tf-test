@@ -1,7 +1,5 @@
 set -Euo pipefail
 
-source source.sh
-
 unset projects
 declare -t projects=(
   ${DEFAULTS_PROJECT}
