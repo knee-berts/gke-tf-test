@@ -49,7 +49,7 @@ resource "google_container_cluster" "primary" {
   # }
   database_encryption {
     state = "ENCRYPTED"
-    key_name = "projects/tf-gke-test-01/locations/us-central1/keyRings/gke/cryptoKeys/gke"
+    key_name = "projects/${var.project_id}/locations/us-central1/keyRings/gke/cryptoKeys/gke"
   }
   release_channel {
     channel = "RAPID"

@@ -40,7 +40,7 @@ resource "google_container_cluster" "primary" {
   node_locations = ["us-central1-b"]
   database_encryption {
     state = "ENCRYPTED"
-    key_name = "projects/tf-gke-test-01/locations/us-central1/keyRings/gke/cryptoKeys/gke"
+    key_name = "projects/${var.project_id}/locations/us-central1/keyRings/gke/cryptoKeys/gke"
   }
 
   # We can't create a cluster with no node pool defined, but we want to only use
