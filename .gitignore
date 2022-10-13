@@ -1,3 +1,2 @@
-source.sh
+env.sh
 tests
-tests/**
