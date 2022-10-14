@@ -13,9 +13,9 @@ declare -t projects=(
   "${PROJECT_PREFIX}-dft-priv-reg-${suffix}"
   "${PROJECT_PREFIX}-kitchsink-rapid-priv-${suffix}"
   "${PROJECT_PREFIX}-kitchsink-reg-priv-${suffix}"
-  "${PROJECT_PREFIX}-w-dft-np-kitchsink-${suffix}"
-  "${PROJECT_PREFIX}-w-dft-np-${suffix}"
-  "${PROJECT_PREFIX}-w-dft-np-reg-${suffix}"
+  "${PROJECT_PREFIX}-dft-np-kitchsink-${suffix}"
+  "${PROJECT_PREFIX}-dft-np-${suffix}"
+  "${PROJECT_PREFIX}-dft-np-reg-${suffix}"
   )
 
 WORKDIR=`pwd`
@@ -29,6 +29,8 @@ for project in ${projects[@]}; do
   echo "${pid}: Running: $project"
   cd ${WORKDIR}
 done
+
+sleep 60
 
 for p in $(ps | grep "terraform apply -var" | awk -F " " '{print $1}'); do
   if wait $p; then
