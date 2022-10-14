@@ -13,6 +13,9 @@ declare -t projects=(
   "${PROJECT_PREFIX}-dft-priv-reg-${suffix}"
   "${PROJECT_PREFIX}-kitchsink-rapid-priv-${suffix}"
   "${PROJECT_PREFIX}-kitchsink-reg-priv-${suffix}"
+  "${PROJECT_PREFIX}-w-dft-np-kitchsink-${suffix}"
+  "${PROJECT_PREFIX}-w-dft-np-${suffix}"
+  "${PROJECT_PREFIX}-w-dft-np-reg-${suffix}"
   )
 
 WORKDIR=`pwd`
@@ -36,14 +39,3 @@ for p in $(ps | grep "terraform apply -var" | awk -F " " '{print $1}'); do
     kill $p &> /dev/null
   fi
 done
-
-cat <<EOF >> env.sh
-  export DEFAULTS_PROJECT="${PROJECT_PREFIX}-dft-${suffix}"
-  export DEFAULTS_RAPID_PROJECT="${PROJECT_PREFIX}-ddft-rapid-${suffix}"
-  export DEFAULTS_REGULAR_PROJECT="${PROJECT_PREFIX}-dft-reg-${suffix}"
-  export DEFAULTS_PRIVATE_PROJECT="${PROJECT_PREFIX}-dft-priv-${suffix}"
-  export DEFAULTS_PRIVATE_RAPID_PROJECT="${PROJECT_PREFIX}-dft-priv-rapid-${suffix}"
-  export DEFAULTS_PRIVATE_REGULAR_PROJECT="${PROJECT_PREFIX}-dft-priv-reg-${suffix}"
-  export KITCHEN_SINK_RAPID_PRIVATE="${PROJECT_PREFIX}-kitchsink-rapid-priv-${suffix}"
-  export KITCHEN_SINK_RREGULAR_PRIVATE="${PROJECT_PREFIX}-kitchsink-reg-priv-${suffix}"
-EOF
