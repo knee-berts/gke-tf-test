@@ -29,15 +29,4 @@ for project in ${projects[@]}; do
   echo "${pid}: Running: $project"
   cd ${WORKDIR}
 done
-
-sleep 60
-
-for p in $(ps | grep "terraform apply -var" | awk -F " " '{print $1}'); do
-  if wait $p; then
-    echo "Terraform apply process $p running in the background."
-  else
-    echo "Terraform apply process $p failed. Apply aborted."
-    echo "Killing any running concurrent commands."
-    kill $p &> /dev/null
-  fi
-done
+echo "Check the output.txt file in the tests directory for each pattern to see progress."
